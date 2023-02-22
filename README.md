@@ -21,10 +21,21 @@ In this project, REST APIs are developed in Go Fiber framework and is integrated
 ## Running the Application
 1. Clone the respository into your local system
 > git clone https://github.com/RamishUrRehman007/GoCommerce.git
+
+![test](images/test.PNG)
+
 2. Run the following Docker Build commands to setup database and application
 > docker-compose up -d postgres<br>
 > docker-compose exec postgres sh -c '/mnt/migration.sh -d go_commerce_dev'<br>
 > docker-compose up
+
+![test](images/test.PNG)
+
 3. Access the Python build container and run the following command to migrate data
 > python migrate_csv_data.py
+
+![test](images/test.PNG)
+
 4. Now run the application using [link]
+
+![test](images/test.PNG)
