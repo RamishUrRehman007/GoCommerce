@@ -102,7 +102,7 @@ export default {
         totalRequest() {
           return this.orders.reduce( (acc, item) => {
                 return acc + item.total_amount
-              }, 0)
+              }, 0).toFixed(2)
         }
     }
   }
