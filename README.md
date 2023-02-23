@@ -29,7 +29,7 @@ In this project, REST APIs are developed in Go Fiber framework and is integrated
 
 ![Database](images/database.PNG)
 
-3. Now, run the following command to setup the python image to migrate data
+3. Now, run the following command to setup the python image to migrate data from csv files.
 > docker-compose up -d python-app
 
 ![PythonApp](images/python_app.PNG)
