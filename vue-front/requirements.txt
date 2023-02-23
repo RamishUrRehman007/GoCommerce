@@ -1,0 +1,15 @@
+https://vuejs.org/guide/quick-start.html#creating-a-vue-application
+npm init vue@latest
+cd <your-project-name>
+npm install
+npm run dev
+
+
+
+npm install json-server --save
+npx json-server --watch data/db.json
+
+npm install axios
+
+
+npm install && npm install alga-css@next v-calendar@next

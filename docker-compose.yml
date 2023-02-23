@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  go-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: packform_mini-go_api
+    ports:
+      - "${SERVER_PORT:-3000}:3000"
+    environment:
+      ENABLE_RELOAD_UVICORN: ${ENABLE_RELOAD_UVICORN}
+      POSTGRES_URL: ${POSTGRES_URL}
+      ENABLE_TOKEN: ${ENABLE_TOKEN}
+      ROOT_PATH: ""
+    volumes:
+      - ".:/srv"
+    networks:
+      - internal
+    depends_on:
+      - "postgres"
+  python-app:
+    container_name: packform_mini-migration
+    build:
+      context: python/
+      dockerfile: python.Dockerfile
+    networks:
+      - internal
+    depends_on:
+      - "postgres"
+  postgres:
+    image: postgres:13.3
+    container_name: packform_mini-postgres
+    ports:
+      - "${HOST_DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    networks:
+      - internal
+    volumes:
+      - "./migrations:/mnt"
+      - ./0000_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/postgresql/data
+  # vue-front:
+  #   container_name: vue_front-ui
+  #   build:
+  #     context: vue-front/
+  #     dockerfile: vue.Dockerfile
+  #   ports:
+  #     - "8090:8090"
+volumes:
+  db_data: {}
+networks:
+  internal:
+    external: false
