@@ -50,7 +50,7 @@ const range = reactive({
             <th>Total Amount</th>
         </tr>
         <tr v-for="order in ordersList" :key="order" v-if="ordersList.length">
-            <td>{{ order.id }} <br> {{ order.order_name }}</td>
+            <td>{{ order.order_name }}</td>
             <td>{{ order.customer_company }}</td>
             <td>{{ order.customer_name }}</td>
             <td>{{ order.order_date }}</td>

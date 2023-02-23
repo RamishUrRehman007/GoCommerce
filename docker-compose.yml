@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: packform_mini-go_api
+    container_name: go_commerce-go_api
     ports:
       - "${SERVER_PORT:-3000}:3000"
     environment:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - "postgres"
   python-app:
-    container_name: packform_mini-migration
+    container_name: go_commerce-migration
     build:
       context: python/
       dockerfile: python.Dockerfile
@@ -29,7 +29,7 @@ services:
       - "postgres"
   postgres:
     image: postgres:13.3
-    container_name: packform_mini-postgres
+    container_name: go_commerce-postgres
     ports:
       - "${HOST_DB_PORT:-5432}:5432"
     environment:

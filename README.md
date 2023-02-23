@@ -22,20 +22,30 @@ In this project, REST APIs are developed in Go Fiber framework and is integrated
 1. Clone the respository into your local system
 > git clone https://github.com/RamishUrRehman007/GoCommerce.git
 
-![test](images/test.PNG)
-
 2. Run the following Docker Build commands to setup database and application
 > docker-compose up -d postgres<br>
-> docker-compose exec postgres sh -c '/mnt/migration.sh -d go_commerce_dev'<br>
-> docker-compose up
+> docker-compose exec postgres sh -c '/mnt/migration.sh -d go_commerce'<br>
 
-![test](images/test.PNG)
 
-3. Access the Python build container and run the following command to migrate data
-> python migrate_csv_data.py
+![Database](images/database.PNG)
 
-![test](images/test.PNG)
+3. Now, run the following command to setup the python image to migrate data
+> docker-compose up -d python-app
 
-4. Now run the application using [link]
+![PythonApp](images/python_app.PNG)
 
-![test](images/test.PNG)
+5. Let's Up the Go App and run following commands:
+> docker-compose up -d go-api
+> cd .\vue-front\
+> npm install
+> npm run dev
+
+![PythonApp](images/docker.PNG)
+
+4. Now run the application using [http://localhost:5173/]
+
+![Running](images/running.PNG)
+
+
+![Running2](images/running2.PNG)
+
