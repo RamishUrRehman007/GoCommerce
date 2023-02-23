@@ -3,6 +3,7 @@ package routes
 import (
 	"Ramish_GO_Fiber/database"
 	"Ramish_GO_Fiber/dto"
+	"math"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -31,8 +32,8 @@ func GetOrders(c *fiber.Ctx) error {
 			CustomerCompany: item["company_name"].(string),
 			CustomerName:    item["name"].(string),
 			OrderDate:       item["created_at"].(time.Time),
-			DeliveredAmount: GetDeliveredAmount(item["id"].(int32)),
-			TotalAmount:     item["total_amount"].(float64),
+			DeliveredAmount: math.Floor(GetDeliveredAmount(item["id"].(int32))*100) / 100,
+			TotalAmount:     math.Floor(item["total_amount"].(float64)*100) / 100,
 		}
 		orders = append(orders, order)
 	}

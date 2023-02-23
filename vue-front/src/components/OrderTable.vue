@@ -38,7 +38,7 @@ const range = reactive({
 <div class="table-responsive">
     <table>
         <tr>
-            <th>Total Amount: </th>
+            <th>Total Amount: ${{ totalRequest }}</th>
         </tr>
         <br>
         <tr>
@@ -54,8 +54,8 @@ const range = reactive({
             <td>{{ order.customer_company }}</td>
             <td>{{ order.customer_name }}</td>
             <td>{{ order.order_date }}</td>
-            <td>{{ order.delivered_amount }}</td>
-            <td>{{ order.total_amount }}</td>
+            <td>${{ order.delivered_amount }}</td>
+            <td>${{ order.total_amount }}</td>
         </tr>
         <tr v-else class="alert"><td>No Data Found!</td></tr>
     </table>
@@ -72,7 +72,8 @@ export default {
         startDate: null,
         endDate: null,
         searchValue: '',
-        orders: []
+        orders: [],
+        orders_total_amount: 0
   }),
   methods: {
         async  getData() {
@@ -92,9 +93,16 @@ export default {
     computed: {
         ordersList() {
             if (this.searchValue.trim().length > 0) {
+                // for(i in this.orders) { this.orders_total_amount += this.orders[i].total_amount; }
                 return this.orders.filter((order) => order.order_name.toLowerCase().includes(this.searchValue.trim().toLowerCase()))
             }
+            // for(i in this.orders) { this.orders_total_amount += this.orders[i].total_amount; }
             return this.orders
+        },
+        totalRequest() {
+          return this.orders.reduce( (acc, item) => {
+                return acc + item.total_amount
+              }, 0)
         }
     }
   }
@@ -180,12 +188,16 @@ table {
   font-weight: bolder;
   
 }
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 th {
   padding: 15px;
   text-align: left;
   color: rgb(65, 64, 64);
   font-weight: bold;
+  font-size: 17.5px;
 }
 
 td {
