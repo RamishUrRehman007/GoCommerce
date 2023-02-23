@@ -35,9 +35,9 @@ In this project, REST APIs are developed in Go Fiber framework and is integrated
 ![PythonApp](images/python_app.PNG)
 
 5. Let's Up the Go App and run following commands:
-> docker-compose up -d go-api
-> cd .\vue-front\
-> npm install
+> docker-compose up -d go-api <br>
+> cd .\vue-front <br>
+> npm install <br>
 > npm run dev
 
 ![PythonApp](images/docker.PNG)
@@ -47,5 +47,6 @@ In this project, REST APIs are developed in Go Fiber framework and is integrated
 ![Running](images/running.PNG)
 
 <br>
+
 ![Running2](images/running2.PNG)
 
