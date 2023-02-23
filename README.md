@@ -41,11 +41,11 @@ In this project, REST APIs are developed in Go Fiber framework and is integrated
 > npm run dev
 
 ![PythonApp](images/docker.PNG)
-
+<br>
 4. Now run the application using [http://localhost:5173/]
 
 ![Running](images/running.PNG)
 
-
+<br>
 ![Running2](images/running2.PNG)
 
